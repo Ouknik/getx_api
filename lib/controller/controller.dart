@@ -1,10 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/state_manager.dart';
 import 'package:getx/model/joke.dart';
 import 'package:getx/model/joke_repository.dart';
-
+import 'package:http/http.dart' as http;
 class JokeController extends GetxController {
   var allJokes = <Joke>[].obs;
   var isLoding = true.obs;
@@ -35,6 +37,28 @@ class JokeController extends GetxController {
       isError(true);
     } finally {
       isLoding(false);
+    }
+  }
+
+  postdata()async{
+    try {
+
+
+      var response = await http.post(Uri.parse('https://jsonplaceholder.typicode.com/posts'),
+          body: {
+            json.encode({
+              "userId": 10,
+              "id": 100,
+              "title": "aaaaaaaaaaaaaaaaa",
+              "body": "bbbbbbbbbbbbbbbbbbbbbbbb",
+            })
+
+          }
+
+      );
+
+    }catch(e){
+      print('error'+ e.toString());
     }
   }
 }

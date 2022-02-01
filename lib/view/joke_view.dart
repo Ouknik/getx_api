@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx/controller/controller.dart';
+import 'package:getx/view/add.dart';
 
 import 'joke_details.dart';
 
@@ -10,7 +11,11 @@ class JokesView extends StatelessWidget {
   Widget build(BuildContext context) {
     var controller = Get.put(JokeController());
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          actions: [
+            IconButton(onPressed:()=>Get.to(Add() , ), icon: Icon(Icons.add),)
+          ],
+        ),
         body: GetX<JokeController>(
           builder: (controller) {
             if (controller.isLoding.value == true) {
@@ -27,17 +32,15 @@ class JokesView extends StatelessWidget {
                           color: Colors.amber,
                           child: ListTile(
                             leading: const Icon(Icons.agriculture),
-                            trailing: const Icon(Icons.arrow_forward),
+                            trailing:  IconButton(
+                                onPressed: ()=>Get.to(JokeDetailsView(data: controller.allJokes[i],)),
+                                icon:Icon(Icons.arrow_forward)),
                             title: Text(
                               controller.allJokes[i].title,
                               style: const TextStyle(color: Colors.black),
                             ),
                             onTap: () {
-                              Get.to(JokeDetailsView(), arguments: [
-                                controller.allJokes[i].id,
-                                controller.allJokes[i].title,
-                                controller.allJokes[i].body
-                              ]);
+
                             },
                           )),
                     );

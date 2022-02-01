@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx/view/joke_view.dart';
 
-import 'view/View_jokes.dart';
+
 
 void main() {
   runApp(const MyApp());
