@@ -46,16 +46,17 @@ class JokeController extends GetxController {
 
       var response = await http.post(Uri.parse('https://jsonplaceholder.typicode.com/posts'),
           body: {
-            json.encode({
-              "userId": 10,
-              "id": 100,
+
+              "userId": '10',
+
               "title": "aaaaaaaaaaaaaaaaa",
               "body": "bbbbbbbbbbbbbbbbbbbbbbbb",
-            })
+
 
           }
 
       );
+          print(response.body);
 
     }catch(e){
       print('error'+ e.toString());
