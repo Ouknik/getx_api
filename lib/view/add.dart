@@ -14,7 +14,7 @@ class Add extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 Center(child: IconButton(onPressed: (){
-  controller.postdata();
+  //controller.postdata();
 }, icon: Icon(Icons.add)))
         ],),
       ),

@@ -1,10 +1,21 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx/view/joke_view.dart';
+import 'package:hive_flutter/adapters.dart';
+import 'package:path_provider/path_provider.dart';
 
 
 
-void main() {
+late Box box; 
+Future<void> main() async {
+ ///final documentDirectory = await getApplicationDocumentsDirectory();
+   // Hive.init(documentDirectory.path);
+//await Hive.openBox('db');
+
+    await Hive.initFlutter();
+
   runApp(const MyApp());
 }
 

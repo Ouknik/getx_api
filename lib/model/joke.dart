@@ -4,12 +4,16 @@
 
 import 'dart:convert';
 
+import 'package:hive/hive.dart';
+part 'joke.g.dart';
 List<Joke> jokeFromJson(String str) =>
     List<Joke>.from(json.decode(str).map((x) => Joke.fromJson(x)));
 
 String jokeToJson(List<Joke> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
+
+@HiveType(typeId: 1)
 class Joke {
   Joke({
     required this.userId,
@@ -18,9 +22,15 @@ class Joke {
     required this.body,
   });
 
+  @HiveField(0)
   int userId;
+
+  @HiveField(1)
   int id;
+  @HiveField(2)
   String title;
+
+  @HiveField(3)
   String body;
 
   factory Joke.fromJson(Map<String, dynamic> json) => Joke(

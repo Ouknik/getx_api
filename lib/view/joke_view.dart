@@ -18,13 +18,13 @@ class JokesView extends StatelessWidget {
         ),
         body: GetX<JokeController>(
           builder: (controller) {
-            if (controller.isLoding.value == true) {
+            if (controller.remaining.length== 0) {
               return const Center(
                 child: CircularProgressIndicator(),
               );
             } else {
               return ListView.builder(
-                  itemCount: controller.allJokes.length,
+                  itemCount: controller.remaining.length,
                   itemBuilder: (context, i) {
                     return Card(
                       elevation: 5,
@@ -33,10 +33,10 @@ class JokesView extends StatelessWidget {
                           child: ListTile(
                             leading: const Icon(Icons.agriculture),
                             trailing:  IconButton(
-                                onPressed: ()=>Get.to(JokeDetailsView(data: controller.allJokes[i],)),
+                                onPressed: (){},//Get.to(JokeDetailsView(data: controller.remaining[i],)),
                                 icon:Icon(Icons.arrow_forward)),
                             title: Text(
-                              controller.allJokes[i].title,
+                              controller.remaining[i].title,
                               style: const TextStyle(color: Colors.black),
                             ),
                             onTap: () {
