@@ -33,7 +33,7 @@ class JokesView extends StatelessWidget {
                           child: ListTile(
                             leading: const Icon(Icons.agriculture),
                             trailing:  IconButton(
-                                onPressed: (){},//Get.to(JokeDetailsView(data: controller.remaining[i],)),
+                                onPressed: ()=>Get.to(JokeDetailsView(data: controller.remaining[i],)),
                                 icon:Icon(Icons.arrow_forward)),
                             title: Text(
                               controller.remaining[i].title,

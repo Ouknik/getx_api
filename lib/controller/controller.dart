@@ -78,7 +78,28 @@ getJokeys() async {
         remaining.add(todo);
     }
   }
+  postdata()async{
+    try {
 
+
+      var response = await http.post(Uri.parse('https://jsonplaceholder.typicode.com/posts'),
+          body: {
+
+            "userId": '10',
+
+            "title": "aaaaaaaaaaaaaaaaa",
+            "body": "bbbbbbbbbbbbbbbbbbbbbbbb",
+
+
+          }
+
+      );
+      print(response.body);
+
+    }catch(e){
+      print('error'+ e.toString());
+    }
+  }
 }
 
 /*
